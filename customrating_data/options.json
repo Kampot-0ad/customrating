@@ -1,0 +1,45 @@
+[
+	{
+	"label": "Custom Rating",
+	"options":
+	[
+		{
+			"type": "boolean",
+			"label": "customrating enabled?",
+			"tooltip": "Enable custom rating",
+			"config": "customrating"
+		},
+		{
+			"type": "string",
+			"label": "Any text max 10 chars",
+			"tooltip": "Any text you like (max 15 chars long). Extra chars use those codes ^1  ∞, ^2 ♡, ^3 ™, ^4 ★, ^5 ↑ ",
+			"config": "customrating.value",
+			"dependencies": ["customrating"]
+
+		},
+		{
+			"type": "dropdown",
+			"label": " or select presets --------->",
+			"tooltip": "You can modify your custom string in brackets - works in game",
+			"config": "customrating.value",
+			"dependencies": ["customrating"],
+			"list": [
+				{ "value": "false", "label": "!No rating" },								
+				{ "value": " ® ", "label": "®"  },
+				{ "value": " © ", "label": "©"  },
+				{ "value": "^1", "label": "∞"  },
+				{ "value": "^2", "label": " ♡ "  },
+				{ "value": "^3", "label": " ™ "  },
+				{ "value": "^4", "label": " ★ "  }					
+			]
+		},
+		{
+			"type": "boolean",
+			"label": "Random numeric (1564)",
+			"tooltip": "Text is ignored and random number between 1200-1900 generated instead",
+			"config": "customrating.random",
+			"dependencies": ["customrating"]			
+		}
+	]
+	}
+]
