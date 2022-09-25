@@ -35,7 +35,7 @@
 		},
 		{
 			"type": "boolean",
-			"label": "Random numeric (1564) - EXPERIMENTAL/BUGGY",
+			"label": "Random numeric (1564) - EXPERIMENTAL/BUGGY\n use only if you host a game",
 			"tooltip": "Text is ignored and random number between 1200-1900 generated instead\nCurrently does not work well if reconnecting to the game as number will be changed.",
 			"config": "customrating.random",
 			"dependencies": ["customrating"]			

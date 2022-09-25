@@ -9,6 +9,7 @@ Kampot (>1600)        #in options put text '>1600'
 Kampot (5555)         #in option put text  '5555' 
 Kampot (∞)            #special characters needs ^1 for ∞, ^2 ♡, ^3 ™, ^4 ★, ^5 ↑
 
+
 ## Mod compatibility(s)
 The mod should be compatible with:
 - Autociv
