@@ -2,7 +2,7 @@
 	"name": "customrating",
 	"version": "0.26.1",
 	"label": "customrating mod",
-	"description": "custom rating can be set in option",
+	"description": "customrating can be set in option",
 	"url": "https://github.com/Kampot-0ad/customrating",
 	"ignoreInCompatibilityChecks": true,
 	"author_name": "Kampot",
