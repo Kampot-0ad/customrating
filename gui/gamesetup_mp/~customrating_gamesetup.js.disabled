@@ -1,59 +1,12 @@
+// patch init function in gamesetup_mp.js by adding executing customrating() function 
 autociv_patchApplyN("init", function (target, that, args)
 {
     const res = target.apply(that, args);
     const [attribs] = args
 	
-	// added by custom rating - START
-	//warn(uneval("customrating patched gamesetup_mp.js - this added"));
-	// added by custom rating
-	var g_PlayerName =attribs.name;
-	var randomRating;
-
-	warn(uneval("attribs.rating:"+attribs.rating));
-	warn(uneval("attribs.name:"+attribs.name));
-	g_UserRating = attribs.rating;
-	
-	var customrating_value = Engine.ConfigDB_GetValue("user","customrating.value");
-	var customrating_random = Engine.ConfigDB_GetValue("user","customrating.random");
-	var customrating_enabled = Engine.ConfigDB_GetValue("user","customrating");
-
-	if(customrating_enabled == "true" ) {
-		if (customrating_random == "true" ) {
-			// (max - min) + min - return random number between min(inclusive) and max (exclusive)
-			randomRating = (Math.floor(Math.random() * (1900 - 1200) + 1200));
-			randomRating = randomRating + "";
-			//g_UserRating = randomRating;	
-			//warn(uneval("customrating_random: "+g_UserRating));			
-			//warn(uneval(g_UserRating));			
-
-			g_UserRating = randomRating.substring(0,26);	
-			warn(uneval("customrating_random: "+g_UserRating));		
-			//g_UserRating = randomRating;	
-		} else {
-			if(customrating_value == "false") {
-				// Get only username without brackets			
-				warn(uneval("customrating_value - false - no rating"));
-				g_UserRating = false;
-				//g_UserRating = attribs.rating;
-			} else {
-				//if(isNaN(customrating_value)) {							
-					warn(uneval("customrating_value - text"));	 
-					//replace extra chars (have to do this coz options save buttonwill save them in wrong charset)
-					customrating_value = customrating_value.replace(/\^1/g,"∞");
-					customrating_value = customrating_value.replace(/\^2/g,"♡");
-					customrating_value = customrating_value.replace(/\^3/g,"™");
-					customrating_value = customrating_value.replace(/\^4/g,"★");
-					customrating_value = customrating_value.replace(/\^5/g,"↑");
-					g_UserRating = customrating_value.substring(0,26);
-			}
-					
-		}
-	} //customrating_enabled		
-	warn(uneval("before g_PlayerName: "+g_PlayerName));		
-		g_PlayerName = !!attribs.name ? attribs.name + (g_UserRating ? " (" + g_UserRating + ")" : "") : "";		
-	warn(uneval("after g_PlayerName: "+g_PlayerName));		
-	// added by custom rating - END
-
+	// customrating patch - START
+	customrating(attribs);
+	// customrating patch - END
 	return res
 })
 
